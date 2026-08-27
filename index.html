@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+
+      <!-- HEADER -->
+      <div class="card header-card">
+        <!-- Theme toggle -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span id="theme-icon">🌙</span>
+        </button>
+
+        <div class="header__time" id="clock">00:00:00</div>
+        <div class="header__date" id="date"></div>
+
+        <!-- Greeting with editable name -->
+        <div class="header__greeting-row">
+          <div class="header__greeting" id="greeting"></div>
+          <button class="btn-name-edit" id="name-edit-btn" aria-label="Edit your name" title="Edit name">✏️</button>
+        </div>
+
+        <!-- Inline name editor (hidden by default) -->
+        <form class="name-form" id="name-form" hidden>
+          <input class="name-input" type="text" id="name-input" placeholder="Enter your name" maxlength="40" aria-label="Your name" />
+          <button class="btn btn--blue" type="submit">Save</button>
+          <button class="btn btn--outline" type="button" id="name-cancel">Cancel</button>
+        </form>
+      </div>
+
+      <!-- ROW: Timer + Tasks -->
+      <div class="row-2">
+
+        <!-- FOCUS TIMER -->
+        <div class="card timer-card" aria-labelledby="timer-title">
+          <div class="card__title" id="timer-title">Focus Timer</div>
+          <div class="timer__display" id="timer-display" role="timer" aria-live="polite">25:00</div>
+          <div class="timer__controls">
+            <button class="btn btn--blue" id="timer-start">Start</button>
+            <button class="btn btn--outline" id="timer-stop" disabled>Stop</button>
+            <button class="btn btn--outline" id="timer-reset">Reset</button>
+          </div>
+        </div>
+
+        <!-- TASKS -->
+        <div class="card" aria-labelledby="todo-title">
+          <div class="todo__header">
+            <div class="card__title" id="todo-title">Tasks</div>
+            <select class="sort-select" id="sort-select" aria-label="Sort tasks">
+              <option value="default">Default</option>
+              <option value="az">A → Z</option>
+              <option value="za">Z → A</option>
+            </select>
+          </div>
+
+          <form class="todo__form" id="todo-form" autocomplete="off">
+            <input
+              class="todo__input"
+              type="text"
+              id="todo-input"
+              placeholder="Add a new task..."
+              aria-label="New task"
+              maxlength="120"
+            />
+            <button class="btn btn--blue" type="submit">Add</button>
+          </form>
+
+          <ul class="todo__list" id="todo-list" aria-label="Task list"></ul>
+          <p class="todo__empty" id="todo-empty">No tasks yet.</p>
+        </div>
+
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="card" aria-labelledby="links-title">
+        <div class="card__title" id="links-title">Quick Links</div>
+
+        <form class="links__form" id="links-form" autocomplete="off">
+          <input
+            class="links__input"
+            type="text"
+            id="links-name"
+            placeholder="Link name"
+            aria-label="Link label"
+            maxlength="40"
+          />
+          <input
+            class="links__input"
+            type="url"
+            id="links-url"
+            placeholder="URL"
+            aria-label="Link URL"
+          />
+          <button class="btn btn--blue" type="submit">Add Link</button>
+        </form>
+
+        <div class="links__grid" id="links-grid" aria-label="Quick links"></div>
+        <p class="links__empty" id="links-empty">No links yet.</p>
+      </div>
+
+    </div>
+
+    <!-- EDIT TASK MODAL -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal">
+        <div class="modal__title" id="modal-title">Edit Task</div>
+        <input class="modal__input" type="text" id="modal-input" maxlength="120" aria-label="Edit task text" />
+        <div class="modal__actions">
+          <button class="btn btn--outline" id="modal-cancel">Cancel</button>
+          <button class="btn btn--blue" id="modal-save">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
